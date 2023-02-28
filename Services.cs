@@ -21,7 +21,11 @@ public static class TodoService
 
   public static Todo? Get(int id) => TodosList.FirstOrDefault(t => t.Id == id);
 
-  public static void Add(Todo newTodo) => TodosList.Add(newTodo);
+  public static void Add(Todo newTodo)
+  {
+    newTodo.Id = nextId++;
+    TodosList.Add(newTodo);
+  } 
 
   public static void Delete(int id)
   {

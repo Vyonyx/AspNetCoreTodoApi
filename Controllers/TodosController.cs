@@ -2,6 +2,8 @@ using AspNetTodoWebApi.Models;
 using AspNetTodoWebApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
+namespace AspNetTodoWebApi.Controllers;
+
 [ApiController]
 [Route("api/[controller]")]
 public class TodosController : ControllerBase
@@ -27,7 +29,7 @@ public class TodosController : ControllerBase
   public ActionResult Create(Todo newTodo)
   {
     TodoService.Add(newTodo);
-    return CreatedAtAction(nameof(Get), new { description = newTodo.Description }, newTodo);
+    return CreatedAtAction(nameof(Get), new { id = newTodo.Id }, newTodo);
   }
 
   [HttpDelete("{id}")]
